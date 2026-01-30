@@ -1,19 +1,27 @@
 #!/bin/bash
 
-# Yum Repository Reporter
-# This script reports on yum repositories available on the system
+# Repository Reporter
+# This script reports on repositories available on the system
 
 echo "=========================================="
-echo "Yum Repository Report"
+echo "Repository Report"
 echo "=========================================="
 echo ""
 
-# Check if yum is available
-if ! command -v yum &> /dev/null; then
-    echo "ERROR: yum command not found."
-    echo "This script requires yum package manager to be installed."
+# Detect which package manager is available
+PKG_MGR=""
+if command -v dnf &> /dev/null; then
+    PKG_MGR="dnf"
+elif command -v yum &> /dev/null; then
+    PKG_MGR="yum"
+else
+    echo "ERROR: Neither dnf nor yum command found."
+    echo "This script requires dnf or yum package manager to be installed."
     exit 1
 fi
+
+echo "Using package manager: $PKG_MGR"
+echo ""
 
 # Check if running as root
 if [ "$EUID" -ne 0 ]; then
@@ -23,17 +31,17 @@ fi
 
 echo "Enabled Repositories:"
 echo "----------------------------"
-yum repolist enabled
+$PKG_MGR repolist enabled
 echo ""
 
 echo "Disabled Repositories:"
 echo "----------------------------"
-yum repolist disabled
+$PKG_MGR repolist disabled
 echo ""
 
 echo "All Repositories (Enabled and Disabled):"
 echo "----------------------------"
-yum repolist all
+$PKG_MGR repolist all
 echo ""
 
 echo "Repository Details:"

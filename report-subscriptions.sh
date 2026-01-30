@@ -12,7 +12,9 @@ echo ""
 if ! command -v subscription-manager &> /dev/null; then
     echo "ERROR: subscription-manager command not found."
     echo "This script requires Red Hat subscription-manager to be installed."
-    echo "Please install it using: yum install subscription-manager"
+    echo "Please install it using:"
+    echo "  - RHEL 8+: dnf install subscription-manager"
+    echo "  - RHEL 7 and earlier: yum install subscription-manager"
     exit 1
 fi
 

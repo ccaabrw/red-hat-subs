@@ -26,17 +26,18 @@ sudo ./report-subscriptions.sh
 
 ### 2. report-repositories.sh
 
-Reports on yum software repositories available on the system and their status.
+Reports on software repositories available on the system and their status.
 
 **What it does:**
 - Lists all enabled repositories
 - Lists all disabled repositories
 - Shows complete repository list with details
 - Lists repository configuration files
+- Automatically detects and uses dnf (RHEL 8+) or yum (RHEL 7 and earlier)
 
 **Requirements:**
 - Red Hat based system (RHEL, CentOS, Fedora, etc.)
-- `yum` package manager installed
+- `dnf` or `yum` package manager installed
 - Root privileges recommended for complete information
 
 **Usage:**
