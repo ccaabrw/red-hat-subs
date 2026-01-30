@@ -31,17 +31,17 @@ fi
 
 echo "Enabled Repositories:"
 echo "----------------------------"
-$PKG_MGR repolist enabled
+"$PKG_MGR" repolist enabled
 echo ""
 
 echo "Disabled Repositories:"
 echo "----------------------------"
-$PKG_MGR repolist disabled
+"$PKG_MGR" repolist disabled
 echo ""
 
 echo "All Repositories (Enabled and Disabled):"
 echo "----------------------------"
-$PKG_MGR repolist all
+"$PKG_MGR" repolist all
 echo ""
 
 echo "Repository Details:"
